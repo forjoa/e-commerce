@@ -1,4 +1,6 @@
-import { Pool } from 'pg'
+import pg from 'pg'
+
+const { Pool } = pg
 
 const pool = new Pool({
   connectionString: import.meta.env.VITE_POSTGRES_URL + "?sslmode=require",
