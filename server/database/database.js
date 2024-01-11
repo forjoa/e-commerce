@@ -3,7 +3,8 @@ import pg from 'pg'
 const { Pool } = pg
 
 const pool = new Pool({
-  connectionString: import.meta.env.VITE_POSTGRES_URL + "?sslmode=require",
+  connectionString: "postgres://default:Xkvi8BDNZf0u@ep-gentle-rain-15675697-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require",
+  
 })
   
 pool.connect((err) => {
