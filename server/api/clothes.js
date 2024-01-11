@@ -1,5 +1,4 @@
 import express from 'express'
-// import pool from '../database/database.js'
 import { sql } from '@vercel/postgres'
 import 'dotenv/config'
 
