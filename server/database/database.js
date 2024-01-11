@@ -4,4 +4,4 @@ const pool = new Pool({
   connectionString: import.meta.env.VITE_POSTGRES_URL + "?sslmode=require",
 })
 
-console.log(pool)
+export default pool
