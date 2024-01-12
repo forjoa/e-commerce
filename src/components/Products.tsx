@@ -1,6 +1,9 @@
 // imports
 import { useEffect, useState } from 'react'
 
+// styles
+import '../styles/products.css'
+
 // types
 import { Product } from '../types/product.ts'
 
