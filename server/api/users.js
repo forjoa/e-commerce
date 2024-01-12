@@ -1,6 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import { sql } from '@vercel/postgres'
+import 'dotenv/config'
 
 const users = express.Router()
 
