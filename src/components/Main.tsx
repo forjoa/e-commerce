@@ -14,17 +14,17 @@ const Main = () => {
   }, [])
 
   return (
-    <>
-      <main className='main'>
+    <main className='main'>
+      <div className='products'>
         {products.map((product) => {
           return (
-            <div className="product" key={product.id}>
+            <div className='product' key={product.id}>
               {product.name}
             </div>
           )
         })}
-      </main>
-    </>
+      </div>
+    </main>
   )
 }
 
