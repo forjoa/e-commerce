@@ -23,4 +23,17 @@ clothes.post('/addClothes', async (req, res) => {
     }
 })
 
+// delete clothes 
+clothes.post('/deleteClothes', async (req, res) => {
+    const { id } = req.body
+
+    const result = await sql`DELETE FROM clothes WHERE id = ${id}`
+
+    if (result.rowCount > 0) {
+        res.status(200).send('clothes deleted successfully')
+    } else {
+        res.status(400).send('something went wrong')
+    }
+})
+
 export default clothes 
