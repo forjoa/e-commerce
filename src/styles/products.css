@@ -1,8 +1,14 @@
+.main {
+    display: grid;
+    place-items: center;
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     max-width: 900px;
+    justify-content: center;
 }
 
 .product {
