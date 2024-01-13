@@ -1,11 +1,12 @@
 // imports
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 // styles
 import '../styles/products.css'
 
 // types
 import { Product } from '../types/product.ts'
+import Skeleton from './Skeleton.tsx'
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([])
@@ -18,6 +19,7 @@ const Products = () => {
 
   return (
     <div className='products'>
+      <Suspense fallback={<Skeleton />}>
       {products.map((product) => {
         return (
           <div className='product' key={product.id}>
@@ -31,6 +33,7 @@ const Products = () => {
           </div>
         )
       })}
+      </Suspense>
     </div>
   )
 }
