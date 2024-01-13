@@ -26,3 +26,8 @@ h1, h2, h3, h4, h5, h6, p, ul, li, ol {
     margin: 0px;
     font-family: 'DM Sans', sans-serif; 
 }
+
+a {
+    color: var(--letters);
+    text-decoration: none;
+}
