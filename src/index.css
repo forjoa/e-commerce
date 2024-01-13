@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800&display=swap');
 
+:root {
+    --background: #fff;
+    --letters: #000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
+    font-family: 'DM Sans', sans-serif; 
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input, textarea, button {
+    font-family: 'DM Sans', sans-serif; 
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol {
+    margin: 0px;
     font-family: 'DM Sans', sans-serif; 
 }
