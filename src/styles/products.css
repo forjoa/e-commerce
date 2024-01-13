@@ -3,6 +3,23 @@
     place-items: center;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+    margin: 20px 0px;
+}
+
+.input-search {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--medium);
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
 .products {
     display: flex;
     flex-wrap: wrap;

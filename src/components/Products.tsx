@@ -8,8 +8,12 @@ import '../styles/products.css'
 import { Product } from '../types/product.ts'
 import Skeleton from './Skeleton.tsx'
 
+// images
+import { IconSearch } from '@tabler/icons-react'
+
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([])
+  const [searching, setSearching] = useState<string>('')
 
   useEffect(() => {
     fetch('https://e-commerce-server-api.vercel.app/api/clothes/allClothes')
@@ -17,11 +21,27 @@ const Products = () => {
       .then((data) => setProducts(data))
   }, [])
 
+  // filter products by searching value
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searching.toLowerCase())
+  )
+
   return (
     <div className='main'>
+      <div className='search-container'>
+        <IconSearch />
+        <input
+          type='text'
+          className='input-search'
+          onChange={(e) => setSearching(e.target.value)}
+          value={searching}
+          placeholder='Search products'
+          spellCheck='false'
+        />
+      </div>
       <div className='products'>
         <Suspense fallback={<Skeleton />}>
-          {products.map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <div className='product' key={product.id}>
                 <img src={product.photo} alt='Product image' />
