@@ -22,7 +22,7 @@ const Products = () => {
   }, [])
 
   // filter products by searching value
-  const filteredProducts = products.filter((product) =>
+  const filteredProducts: Product[] = products.filter((product) =>
     product.name.toLowerCase().includes(searching.toLowerCase())
   )
 
