@@ -1,0 +1,14 @@
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-left a {
+    display:flex;
+}
+
+.header-left img {
+    width: 50px;
+}
+
