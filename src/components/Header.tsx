@@ -1,5 +1,6 @@
 // images
 import logo from '../assets/icon.png'
+import { IconShoppingCart } from '@tabler/icons-react'
 
 // styles
 import '../styles/header.css'
@@ -17,6 +18,7 @@ const Header = () => {
         <div className='header-right'>
           <button className='login-btn'>Login</button>
           <button className='register-btn'>Register</button>
+          <IconShoppingCart />
         </div>
       </div>
     </header>
