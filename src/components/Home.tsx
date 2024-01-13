@@ -1,12 +1,12 @@
 // components
-import Main from './Main'
 import Header from './Header'
+import Products from './Products'
 
 function Home() {
   return (
     <>
       <Header />
-      <Main />
+      <Products />
     </>
   )
 }
