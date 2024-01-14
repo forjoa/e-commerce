@@ -57,3 +57,14 @@
     background-color: var(--medium);
     color: var(--letters);
 }
+
+@media (max-width: 900px) {
+    .header-container {
+        width: 100%;
+        padding: 20px 20px;
+    }
+
+    .header-left a h1 {
+        display: none;
+    }
+}
