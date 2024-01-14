@@ -5,15 +5,23 @@ const Skeleton = () => {
   return (
     <ContentLoader
       speed={2}
-      width={100}
-      height={160}
-      viewBox='0 0 100 160'
+      width={900}
+      height={1000}
+      viewBox='0 0 900 1000'
       backgroundColor='#f3f3f3'
       foregroundColor='#ecebeb'
     >
-      <rect x='4' y='9' rx='0' ry='0' width='88' height='76' />
-      <rect x='6' y='112' rx='0' ry='0' width='84' height='22' />
-      <rect x='7' y='96' rx='0' ry='0' width='49' height='7' />
+      <rect x='37' y='340' rx='0' ry='0' width='240' height='50' />
+      <rect x='37' y='308' rx='0' ry='0' width='97' height='14' />
+      <rect x='37' y='14' rx='0' ry='0' width='240' height='272' />
+
+      <rect x='340' y='340' rx='0' ry='0' width='240' height='50' />
+      <rect x='340' y='308' rx='0' ry='0' width='97' height='14' />
+      <rect x='340' y='14' rx='0' ry='0' width='240' height='272' />
+
+      <rect x='643' y='340' rx='0' ry='0' width='240' height='50' />
+      <rect x='643' y='308' rx='0' ry='0' width='97' height='14' />
+      <rect x='643' y='14' rx='0' ry='0' width='240' height='272' />
     </ContentLoader>
   )
 }
