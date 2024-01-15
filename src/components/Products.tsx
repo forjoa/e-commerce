@@ -1,12 +1,13 @@
 // imports
-import { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
+import Skeleton from './Skeleton.tsx'
+import { cart } from '../utils/cart.ts'
 
 // styles
 import '../styles/products.css'
 
 // types
 import { Product } from '../types/product.ts'
-import Skeleton from './Skeleton.tsx'
 
 // images
 import { IconSearch } from '@tabler/icons-react'
@@ -29,6 +30,13 @@ const Products = () => {
   const filteredProducts: Product[] = products.filter((product) =>
     product.name.toLowerCase().includes(searching.toLowerCase())
   )
+
+  // add to cart handler
+  const addCart = (product: Product) => (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    
+    cart.push(product)
+  }
 
   return (
     <div className='main'>
@@ -55,7 +63,7 @@ const Products = () => {
               <h3>{product.name}</h3>
               <p>€ {product.price}</p>
               <span>Sizes: {product.size}</span>
-              <button disabled={product.available ? false : true}>
+              <button disabled={product.available ? false : true} onClick={addCart(product)}>
                 Add to cart
               </button>
             </div>

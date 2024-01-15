@@ -5,7 +5,15 @@ import { IconShoppingCart } from '@tabler/icons-react'
 // styles
 import '../styles/header.css'
 
+// imports
+import { cart } from '../utils/cart'
+
 const Header = () => {
+  
+  const showCart = () => {
+    console.log(cart)
+  }
+
   return (
     <header className='home-header'>
       <div className='header-container'>
@@ -18,7 +26,7 @@ const Header = () => {
         <div className='header-right'>
           <button className='login-btn'>Login</button>
           <button className='register-btn'>Register</button>
-          <IconShoppingCart />
+          <IconShoppingCart onClick={showCart}/>
         </div>
       </div>
     </header>
