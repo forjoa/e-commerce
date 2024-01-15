@@ -13,9 +13,9 @@ export const clothesController = {
       await sql`INSERT INTO clothes(price, size, name, available, photo) VALUES(${price}, ${size}, ${name}, ${available}, ${photo})`
 
     if (result.rowCount > 0) {
-      res.status(200).send('clothes saved successfully')
+      res.status(200).json({ message: 'Clothes saved successfully' })
     } else {
-      res.status(400).send('something went wrong')
+      res.status(400).send({ message: 'Something went wrong while saving clothes' })
     }
   },
   delete: async (req, res) => {
@@ -24,9 +24,9 @@ export const clothesController = {
     const result = await sql`DELETE FROM clothes WHERE id = ${id}`
 
     if (result.rowCount > 0) {
-      res.status(200).send('clothes deleted successfully')
+      res.status(200).json({ message: 'Clothes deleted successfully' })
     } else {
-      res.status(400).send('something went wrong')
+      res.status(400).json({ message: 'Something went wrong while deleting clothes' })
     }
   },
   edit: async (req, res) => {
@@ -42,9 +42,9 @@ export const clothesController = {
         WHERE id = ${id}`
 
     if (result.rowCount > 0) {
-      res.status(200).send('clothes saved successfully')
+      res.status(200).json({ message: 'Clothes edited successfully' })
     } else {
-      res.status(400).send('something went wrong')
+      res.status(400).json({ message: 'Something went wrong while editing clothes' })
     }
   },
 }

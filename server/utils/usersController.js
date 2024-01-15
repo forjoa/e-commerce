@@ -14,12 +14,12 @@ export const usersController = {
           const match = await bcrypt.compare(pwd, pwdHashed)
       
           if (match) {
-            res.status(200).send('user logging correct')
+            res.status(200).json({ message: 'User logging correct' })
           } else {
-            res.status(401).send('incorrect password')
+            res.status(401).json({ message: 'Incorrect password'})
           }
         } else {
-          res.status(404).send('user not found')
+          res.status(404).json({ message: 'User not found'})
         }
       },
       register: async (req, res) => {
@@ -34,10 +34,10 @@ export const usersController = {
             await sql`INSERT INTO users (name, email, pwd) VALUES (${name}, ${email}, ${hashedPassword})`
       
           if (result.rowCount > 0) {
-            res.status(200).send('user registered correctly')
+            res.status(200).json({ message: 'User registered correctly' })
           } else {
-            res.status(400).send('something went wrong')
+            res.status(400).json({ message: 'Something went wrong' })
           }
-        } else res.status(409).send('user already registered')
+        } else res.status(409).json({ message: 'User already registered' })
       }
 }
