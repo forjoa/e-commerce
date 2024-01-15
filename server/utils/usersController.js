@@ -29,9 +29,9 @@ export const usersController = {
 
     if (rows.length == 0) {
       const hashedPassword = await bcrypt.hash(pwd, 10)
-
+      const role = 'user'
       const result =
-        await sql`INSERT INTO users (name, email, pwd) VALUES (${name}, ${email}, ${hashedPassword})`
+        await sql`INSERT INTO users (name, email, pwd, role) VALUES (${name}, ${email}, ${hashedPassword}, ${role})`
 
       if (result.rowCount > 0) {
         res.status(200).json({ message: 'User registered correctly' })
