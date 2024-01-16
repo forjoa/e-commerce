@@ -58,6 +58,17 @@
     color: var(--letters);
 }
 
+.cart-length {
+    color: var(--background);
+    background-color: var(--letters);
+    border-radius: 50%;
+    padding: 5px;
+    aspect-ratio: 1 / 1;
+    width: 30px;
+    display: grid;
+    place-items: center;
+}
+
 @media (max-width: 900px) {
     .header-container {
         width: 100%;

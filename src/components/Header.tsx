@@ -6,14 +6,20 @@ import { IconShoppingCart } from '@tabler/icons-react'
 import '../styles/header.css'
 
 // imports
-import { cart } from '../utils/cart'
+import { cart } from '../utils/cart.ts'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
-  
+  const [cartCount, setCartCount] = useState<number>(cart.length) 
+
+  useEffect(() => {
+    setCartCount(cart.length)
+  }, []) 
+
   const showCart = () => {
     console.log(cart)
   }
-
+  
   return (
     <header className='home-header'>
       <div className='header-container'>
@@ -26,7 +32,8 @@ const Header = () => {
         <div className='header-right'>
           <button className='login-btn'>Login</button>
           <button className='register-btn'>Register</button>
-          <IconShoppingCart onClick={showCart}/>
+          <IconShoppingCart onClick={showCart} />
+          <p className='cart-length'>{cartCount}</p>
         </div>
       </div>
     </header>

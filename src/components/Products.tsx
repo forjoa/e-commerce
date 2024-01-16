@@ -32,11 +32,12 @@ const Products = () => {
   )
 
   // add to cart handler
-  const addCart = (product: Product) => (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    
-    cart.push(product)
-  }
+  const addCart =
+    (product: Product) => (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault()
+
+      cart.push(product)
+    }
 
   return (
     <div className='main'>
@@ -52,18 +53,21 @@ const Products = () => {
         />
       </div>
       <div className='products'>
-        {loading ? ( 
+        {loading ? (
           <Suspense fallback={<Skeleton />}>
-              <Skeleton />
+            <Skeleton />
           </Suspense>
         ) : (
           filteredProducts.map((product) => (
             <div className='product' key={product.id}>
               <img src={product.photo} alt='Product image' />
               <h3>{product.name}</h3>
-              <p>€ {product.price}</p>
+              <p>{product.price} €</p>
               <span>Sizes: {product.size}</span>
-              <button disabled={product.available ? false : true} onClick={addCart(product)}>
+              <button
+                disabled={product.available ? false : true}
+                onClick={addCart(product)}
+              >
                 Add to cart
               </button>
             </div>
