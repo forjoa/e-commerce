@@ -4,6 +4,9 @@
     --background: #fff;
     --letters: #000;
     --medium: #aaa;
+    --red: #f00;
+    --red-bg: rgba(255, 0, 0, 0.4);
+    --medium-overlay: #00000070;
 }
 
 * {
