@@ -12,5 +12,5 @@ This is a simple e-commerce website where you can look for products by searching
 -> This project is completly on Vercel:
 ### Frontend: React + Typescript
 ### Backend: Node.js
-### Database: Postgre
+### Database: PostgreSQL
 
