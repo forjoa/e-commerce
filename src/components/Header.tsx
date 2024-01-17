@@ -1,14 +1,17 @@
 // images
 import logo from '../assets/icon.png'
-import { IconShoppingCart, IconTrash } from '@tabler/icons-react'
+import { IconShoppingCart } from '@tabler/icons-react'
 
 // styles
-import '../styles/header.css'
+import '../styles/header.css' 
 
 // imports
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { Product } from '../types/product.ts'
+
+// components 
+import Cart from './Cart.tsx'
 
 const Header = ({ cart, setCart }: { cart: Product[], setCart: Dispatch<SetStateAction<Product[]>> }) => {
   const [cartCount, setCartCount] = useState<number>(cart.length)
@@ -20,21 +23,8 @@ const Header = ({ cart, setCart }: { cart: Product[], setCart: Dispatch<SetState
       0
     )
     setTotalPrice(newTotalPrice)
-
     setCartCount(cart.length)
   }, [cart])
-
-  // const showCart = () => {
-  //   console.log(cart)
-  // }
-
-  const deleteFromCart =
-    (index: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault()
-      const newCart = [...cart] 
-      newCart.splice(index, 1)
-      setCart(newCart)  
-    }
 
   return (
     <header className='home-header'>
@@ -49,36 +39,7 @@ const Header = ({ cart, setCart }: { cart: Product[], setCart: Dispatch<SetState
           <button className='login-btn'>Login</button>
           <button className='register-btn'>Register</button>
           <Popup trigger={<IconShoppingCart />} modal nested>
-            <div className='cart-list-container'>
-              {cart.map((product: Product, index: number) => {
-                return (
-                  <div
-                    className='product-cart'
-                    data-id={product.id}
-                    key={index}
-                  >
-                    <img src={product.photo} alt='Product image' />
-                    <div className='product-cart-info'>
-                      <p>{product.name}</p>
-                      <span>{product.size}</span>
-                      <span>{product.price}</span>
-                    </div>
-                    <button value={index} onClick={deleteFromCart(index)}>
-                      <IconTrash color='red' />
-                    </button>
-                  </div>
-                )
-              })}
-            </div>
-            <hr />
-            <div className='total-price-container'>
-              <span>Precio total: </span>
-              <span>{totalPrice} €</span>
-            </div>
-            <div className='pay-container'>
-              <div></div>
-              <button>Pagar</button>
-            </div>
+            <Cart cart={cart} totalPrice={totalPrice} setCart={setCart}></Cart>
           </Popup>
           <p className='cart-length'>{cartCount}</p>
         </div>
