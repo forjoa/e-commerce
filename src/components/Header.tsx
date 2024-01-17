@@ -13,8 +13,12 @@ import { Product } from '../types/product.ts'
 
 const Header = () => {
   const [cartCount, setCartCount] = useState<number>(cart.length)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
 
   useEffect(() => {
+    const newTotalPrice = cart.reduce((total, product) => total + Number(product.price), 0);
+    setTotalPrice(newTotalPrice);
+
     setCartCount(cart.length)
   }, [])
 
@@ -22,10 +26,11 @@ const Header = () => {
   //   console.log(cart)
   // }
 
-  const deleteFromCart = (index : number) => (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    cart.splice(index, 1) 
-  }
+  const deleteFromCart =
+    (index: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault()
+      cart.splice(index, 1)
+    }
 
   return (
     <header className='home-header'>
@@ -42,8 +47,12 @@ const Header = () => {
           <Popup trigger={<IconShoppingCart />} modal nested>
             <div className='cart-list-container'>
               {cart.map((product: Product, index: number) => {
-                return ( 
-                  <div className='product-cart' data-id={product.id}> 
+                return (
+                  <div
+                    className='product-cart'
+                    data-id={product.id}
+                    key={index}
+                  >
                     <img src={product.photo} alt='Product image' />
                     <div className='product-cart-info'>
                       <p>{product.name}</p>
@@ -51,11 +60,23 @@ const Header = () => {
                       <span>{product.price}</span>
                     </div>
                     <button value={index} onClick={deleteFromCart(index)}>
-                      <IconTrash color='red'/> 
+                      <IconTrash color='red' />
                     </button>
                   </div>
                 )
               })}
+            </div>
+            <hr />  
+            <div className="total-price-container">
+              <span>Precio total: </span><span>{totalPrice} €</span>
+            </div>
+            <div className="pay-container">
+              <div>
+
+              </div>
+              <button>
+                Pagar
+              </button>
             </div>
           </Popup>
           <p className='cart-length'>{cartCount}</p>
