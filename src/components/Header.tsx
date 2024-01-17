@@ -6,21 +6,23 @@ import { IconShoppingCart, IconTrash } from '@tabler/icons-react'
 import '../styles/header.css'
 
 // imports
-import { cart } from '../utils/cart.ts'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 import { Product } from '../types/product.ts'
 
-const Header = () => {
+const Header = ({ cart, setCart }: { cart: Product[], setCart: Dispatch<SetStateAction<Product[]>> }) => {
   const [cartCount, setCartCount] = useState<number>(cart.length)
   const [totalPrice, setTotalPrice] = useState<number>(0)
 
   useEffect(() => {
-    const newTotalPrice = cart.reduce((total, product) => total + Number(product.price), 0);
-    setTotalPrice(newTotalPrice);
+    const newTotalPrice = cart.reduce(
+      (total: number, product: Product) => total + Number(product.price),
+      0
+    )
+    setTotalPrice(newTotalPrice)
 
     setCartCount(cart.length)
-  }, [])
+  }, [cart])
 
   // const showCart = () => {
   //   console.log(cart)
@@ -29,7 +31,9 @@ const Header = () => {
   const deleteFromCart =
     (index: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault()
-      cart.splice(index, 1)
+      const newCart = [...cart] 
+      newCart.splice(index, 1)
+      setCart(newCart)  
     }
 
   return (
@@ -66,17 +70,14 @@ const Header = () => {
                 )
               })}
             </div>
-            <hr />  
-            <div className="total-price-container">
-              <span>Precio total: </span><span>{totalPrice} €</span>
+            <hr />
+            <div className='total-price-container'>
+              <span>Precio total: </span>
+              <span>{totalPrice} €</span>
             </div>
-            <div className="pay-container">
-              <div>
-
-              </div>
-              <button>
-                Pagar
-              </button>
+            <div className='pay-container'>
+              <div></div>
+              <button>Pagar</button>
             </div>
           </Popup>
           <p className='cart-length'>{cartCount}</p>

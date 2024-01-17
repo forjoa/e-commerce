@@ -1,7 +1,6 @@
 // imports
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, Suspense, useEffect, useState } from 'react'
 import Skeleton from './Skeleton.tsx'
-import { cart } from '../utils/cart.ts'
 
 // styles
 import '../styles/products.css'
@@ -12,7 +11,7 @@ import { Product } from '../types/product.ts'
 // images
 import { IconSearch } from '@tabler/icons-react'
 
-const Products = () => {
+const Products = ({ cart, setCart }: { cart: Product[], setCart: Dispatch<SetStateAction<Product[]>> }) => {
   const [products, setProducts] = useState<Product[]>([])
   const [searching, setSearching] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
@@ -35,8 +34,9 @@ const Products = () => {
   const addCart =
     (product: Product) => (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault()
-
-      cart.push(product)
+      const newCart = cart
+      newCart.push(product)
+      setCart(newCart)
     }
 
   return (
